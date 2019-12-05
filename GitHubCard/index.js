@@ -3,11 +3,11 @@
            https://api.github.com/users/<your name>
 */
 
-// axios.get('https://api.github.com/users/RobertElias')
-// .then(response =>{
-//   console.log(response)
+axios.get('https://api.github.com/users/RobertElias')
+.then(response =>{
+  console.log(response)
   
-// });
+});
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -52,7 +52,7 @@ const followersArray = [];
 
 */
  
-function profiles(objects){
+function profiles(object){
 
   //create Elements 
 
@@ -68,6 +68,32 @@ function profiles(objects){
   const nameH3 = document.createElement('h3');
   nameH3.classList.add('name');
   nameH3.textContent = object.name;
+
+  const userP = document.createElement('p');
+  userP.classList.add('username');
+  userP.textContent = object.login
+
+  const Location = document.createElement('p');
+  Location.textContent = `Location: ${object.location}`
+  
+  const profileP = document.createElement('p');
+  profileP.textContent = `Profile: `
+  
+  const Anchor = document.createElement('a');
+  Anchor.href = object.html_url;
+  Anchor.textContent = 'Github-Page';
+
+  const Followers = document.createElement('p');
+  Followers.textContent = `Followers: ${object.followers}`;
+  
+  const Following = document.createElement('p');
+  Following.textContent = `Following : ${object.following}`;
+
+  const Bio = document.createElement('p');
+  Bio.textContent = `Bio Info: ${object.bio}`;
+
+  
+  
 
   
 }
