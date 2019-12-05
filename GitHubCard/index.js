@@ -28,23 +28,46 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [
-  "RobertElias",
-  "bradtraversy",
-  "alphaseinor",
-  "Colt",
-  "andrewjmead"
+// const followersArray = [
+//   "RobertElias",
+//   "bradtraversy",
+//   "alphaseinor",
+//   "Colt",
+//   "andrewjmead"
 
-];
+// ];
 
-followersArray.forEach(follower => {
-  axios.get(`https://api.github.com/users/${follower}`)
-      .then(response => {
-          //console.log(response);
-          profiles(response.data);
-          return follower;
-      });
-})
+// followersArray.forEach(follower => {
+  // axios.get(`https://api.github.com/users/${followers}`)
+//       .then(response => {
+//           console.log(response.data);
+//           profiles(response.data);
+//           return follower;
+//       });
+  
+// })
+
+
+
+
+
+  
+
+
+// Step Three: talk about HTTP, requesting data from a server, and axios
+//const Post = document.querySelector('.cards');
+// axios.get("https://api.github.com/users/RobertElias/followers")
+//   .then(response => {
+//     console.log(response.data);
+//     response.data.forEach(item => {
+//       const newCard = profiles(item)
+//       Post.appendChild(cardDiv);
+//     })
+//   })
+// .catch(error =>{
+//   console.log("The data was not returned" ,error)
+// })
+
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
 
@@ -122,7 +145,28 @@ function profiles(object) {
   const Post = document.querySelector('.cards');
   Post.appendChild(cardDiv);
 
+  return cardDiv;
 }
+
+axios.get("https://api.github.com/users/RobertElias/followers")
+  .then(response => {
+    console.log(response.data);
+    response.data.forEach(item => {
+      const newCard = profiles(item)
+      
+    })
+  })
+.catch(error =>{
+  console.log("The data was not returned" ,error)
+})
+
+
+
+
+// Step Three: talk about HTTP, requesting data from a server, and axios
+
+
+
 
 
 /* List of LS Instructors Github username's: 
