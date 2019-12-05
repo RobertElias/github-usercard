@@ -3,11 +3,11 @@
            https://api.github.com/users/<your name>
 */
 
-axios.get('https://api.github.com/users/RobertElias')
-.then(response =>{
-  console.log(response)
+// axios.get('https://api.github.com/users/RobertElias')
+// .then(response =>{
+//   console.log(response)
   
-});
+// });
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -51,6 +51,27 @@ const followersArray = [];
 </div>
 
 */
+ 
+function profiles(objects){
+
+  //create Elements 
+
+  const carDiv = document.createElement('div');
+  cardDiv.classList.add('card');
+
+  const avatar = document.createElement('img');
+  avatar.src = object.avatar_url;
+
+  const cardInfo = document.createElement('div');
+  cardInfo.classList.add('card-info');
+  
+  const nameH3 = document.createElement('h3');
+  nameH3.classList.add('name');
+  nameH3.textContent = object.name;
+
+  
+}
+
 
 /* List of LS Instructors Github username's: 
   tetondan
