@@ -92,10 +92,22 @@ function profiles(object){
   const Bio = document.createElement('p');
   Bio.textContent = `Bio Info: ${object.bio}`;
 
-  
-  
+  //appendChild
+  cardDiv.appendChild(avatar);
+  cardDiv.appendChild(cardInfo);
+
+  cardInfo.appendChild(nameH3);
+  cardInfo.appendChild(userP);
+  cardInfo.appendChild(Location);
+  cardInfo.appendChild(profileP);
+  cardInfo.appendChild(Followers);
+  cardInfo.appendChild(Following);
+  cardInfo.appendChild(Bio);
+
+  profileP.appendChild(Anchor);
 
   
+
 }
 
 
