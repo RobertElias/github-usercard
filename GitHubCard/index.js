@@ -3,6 +3,10 @@
            https://api.github.com/users/<your name>
 */
 
+
+
+
+
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -24,7 +28,45 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [
+  "RobertElias",
+  "bradtraversy",
+  "alphaseinor",
+  "Colt",
+  "andrewjmead"
+
+];
+
+followersArray.forEach(follower => {
+  axios.get(`https://api.github.com/users/${follower}`)
+      .then(response => {
+          console.log(response.data);
+          profiles(response.data);
+          return follower;
+      });
+  
+})
+
+
+
+
+
+  
+
+
+// Step Three: talk about HTTP, requesting data from a server, and axios
+//const Post = document.querySelector('.cards');
+// axios.get("https://api.github.com/users/RobertElias/followers")
+//   .then(response => {
+//     console.log(response.data);
+//     response.data.forEach(item => {
+//       const newCard = profiles(item)
+//       Post.appendChild(cardDiv);
+//     })
+//   })
+// .catch(error =>{
+//   console.log("The data was not returned" ,error)
+// })
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -45,6 +87,91 @@ const followersArray = [];
 </div>
 
 */
+
+function profiles(object) {
+
+  //create Elements 
+
+  const cardDiv = document.createElement('div');
+  cardDiv.classList.add('card');
+
+  const avatar = document.createElement('img');
+  avatar.src = object.avatar_url;
+
+  const cardInfo = document.createElement('div');
+  cardInfo.classList.add('card-info');
+
+  const nameH3 = document.createElement('h3');
+  nameH3.classList.add('name');
+  nameH3.textContent = object.name;
+
+  const userP = document.createElement('p');
+  userP.classList.add('username');
+  userP.textContent = object.login
+
+  const Location = document.createElement('p');
+  Location.textContent = `Location: ${object.location}`
+
+  const profileP = document.createElement('p');
+  profileP.textContent = `Profile: `
+
+  const Anchor = document.createElement('a');
+  Anchor.href = object.html_url;
+  Anchor.textContent = 'Github-Page';
+
+  const Followers = document.createElement('p');
+  Followers.textContent = `Followers: ${object.followers}`;
+
+  const Following = document.createElement('p');
+  Following.textContent = `Following : ${object.following}`;
+
+  const Bio = document.createElement('p');
+  Bio.textContent = `Bio Info: ${object.bio}`;
+
+  //appendChild
+  cardDiv.appendChild(avatar);
+  cardDiv.appendChild(cardInfo);
+
+  cardInfo.appendChild(nameH3);
+  cardInfo.appendChild(userP);
+  cardInfo.appendChild(Location);
+  cardInfo.appendChild(profileP);
+  cardInfo.appendChild(Followers);
+  cardInfo.appendChild(Following);
+  cardInfo.appendChild(Bio);
+
+  profileP.appendChild(Anchor);
+
+  const Post = document.querySelector('.cards');
+  Post.appendChild(cardDiv);
+ 
+  return cardDiv;
+}
+
+// axios.get("https://api.github.com/users/RobertElias/followers")
+//   .then(response => {
+//     //console.log(response.data);
+//     response.data.forEach(item => {
+//       //console.log(response.data);
+//       const newCard = profiles(item)
+//       console.log(item);
+
+//     })
+//   })
+// .catch(error =>{
+//   console.log("The data was not returned" ,error)
+// })
+
+
+
+
+
+
+// Step Three: talk about HTTP, requesting data from a server, and axios
+
+
+
+
 
 /* List of LS Instructors Github username's: 
   tetondan
