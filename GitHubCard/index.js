@@ -3,11 +3,9 @@
            https://api.github.com/users/<your name>
 */
 
-axios.get('https://api.github.com/users/RobertElias')
-.then(response =>{
-  console.log(response)
-  
-});
+
+
+
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -30,8 +28,23 @@ axios.get('https://api.github.com/users/RobertElias')
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [
+  "RobertElias",
+  "bradtraversy",
+  "alphaseinor",
+  "Colt",
+  "andrewjmead"
 
+];
+
+followersArray.forEach(follower => {
+  axios.get(`https://api.github.com/users/${follower}`)
+      .then(response => {
+          //console.log(response);
+          profiles(response.data);
+          return follower;
+      });
+})
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
 
@@ -51,12 +64,12 @@ const followersArray = [];
 </div>
 
 */
- 
-function profiles(object){
+
+function profiles(object) {
 
   //create Elements 
 
-  const carDiv = document.createElement('div');
+  const cardDiv = document.createElement('div');
   cardDiv.classList.add('card');
 
   const avatar = document.createElement('img');
@@ -64,7 +77,7 @@ function profiles(object){
 
   const cardInfo = document.createElement('div');
   cardInfo.classList.add('card-info');
-  
+
   const nameH3 = document.createElement('h3');
   nameH3.classList.add('name');
   nameH3.textContent = object.name;
@@ -75,17 +88,17 @@ function profiles(object){
 
   const Location = document.createElement('p');
   Location.textContent = `Location: ${object.location}`
-  
+
   const profileP = document.createElement('p');
   profileP.textContent = `Profile: `
-  
+
   const Anchor = document.createElement('a');
   Anchor.href = object.html_url;
   Anchor.textContent = 'Github-Page';
 
   const Followers = document.createElement('p');
   Followers.textContent = `Followers: ${object.followers}`;
-  
+
   const Following = document.createElement('p');
   Following.textContent = `Following : ${object.following}`;
 
@@ -106,7 +119,8 @@ function profiles(object){
 
   profileP.appendChild(Anchor);
 
-  
+  const Post = document.querySelector('.cards');
+  Post.appendChild(cardDiv);
 
 }
 
