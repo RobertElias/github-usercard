@@ -28,24 +28,24 @@
           user, and adding that card to the DOM.
 */
 
-// const followersArray = [
-//   "RobertElias",
-//   "bradtraversy",
-//   "alphaseinor",
-//   "Colt",
-//   "andrewjmead"
+const followersArray = [
+  "RobertElias",
+  "bradtraversy",
+  "alphaseinor",
+  "Colt",
+  "andrewjmead"
 
-// ];
+];
 
-// followersArray.forEach(follower => {
-  // axios.get(`https://api.github.com/users/${followers}`)
-//       .then(response => {
-//           console.log(response.data);
-//           profiles(response.data);
-//           return follower;
-//       });
+followersArray.forEach(follower => {
+  axios.get(`https://api.github.com/users/${follower}`)
+      .then(response => {
+          console.log(response.data);
+          profiles(response.data);
+          return follower;
+      });
   
-// })
+})
 
 
 
@@ -144,21 +144,25 @@ function profiles(object) {
 
   const Post = document.querySelector('.cards');
   Post.appendChild(cardDiv);
-
+ 
   return cardDiv;
 }
 
-axios.get("https://api.github.com/users/RobertElias/followers")
-  .then(response => {
-    console.log(response.data);
-    response.data.forEach(item => {
-      const newCard = profiles(item)
-      
-    })
-  })
-.catch(error =>{
-  console.log("The data was not returned" ,error)
-})
+// axios.get("https://api.github.com/users/RobertElias/followers")
+//   .then(response => {
+//     //console.log(response.data);
+//     response.data.forEach(item => {
+//       //console.log(response.data);
+//       const newCard = profiles(item)
+//       console.log(item);
+
+//     })
+//   })
+// .catch(error =>{
+//   console.log("The data was not returned" ,error)
+// })
+
+
 
 
 
